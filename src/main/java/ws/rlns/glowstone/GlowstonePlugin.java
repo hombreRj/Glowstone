@@ -1,11 +1,13 @@
 package ws.rlns.glowstone;
 
+import com.mongodb.MongoClient;
 import org.bukkit.plugin.java.JavaPlugin;
 import ws.rlns.glowstone.database.GlowstoneMongo;
 import ws.rlns.glowstone.database.utils.Credentials;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 
 public class GlowstonePlugin extends JavaPlugin {
 
@@ -33,10 +35,10 @@ public class GlowstonePlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getDatabase().ifPresent(glowstoneMongo -> glowstoneMongo.getClient().close());
+        getDatabase(MongoClient::close);
     }
 
-    public static Optional<GlowstoneMongo> getDatabase(){
-        return Optional.ofNullable(DATABASE_REFERENCE.get());
+    public static void getDatabase(Consumer<MongoClient> consumer){
+        consumer.accept((DATABASE_REFERENCE.get().getClient()));
     }
 }
