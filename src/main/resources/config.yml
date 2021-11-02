@@ -1,0 +1,7 @@
+database:
+  uri: ""
+  ip: ""
+  username: ""
+  password: ""
+  port: ""
+  database: "glowstone"
