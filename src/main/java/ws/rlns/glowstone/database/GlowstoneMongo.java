@@ -44,7 +44,7 @@ public final class GlowstoneMongo {
             }
         }
         try {
-            database = client.getDatabase(databaseName.isBlank() ? "glowstone_default" : databaseName);
+            database = client.getDatabase(databaseName.isEmpty() ? "glowstone_default" : databaseName);
         } catch (Exception ignored) {
         }
     }
