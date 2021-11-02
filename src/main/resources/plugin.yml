@@ -1,0 +1,5 @@
+name: glowstone
+version: 1
+main: ws.rlns.glowstone.Glowstone
+author: rlns
+website: https://ci.rlns.ws
